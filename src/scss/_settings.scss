@@ -1,0 +1,40 @@
+#p5gui {
+  --font: Monospace;
+  --font-size: 10px;
+
+  --border-radius: 9px;
+
+  --color-background: #edf8f8;
+  --color-text: #050c0c;
+
+  --color-hover: #050c0c;
+
+  --group--color-background: #dbe9e9;
+  --group--color-text: #181b1b;
+
+  --button--color-background: #dbe9e9;
+  --button--color-foreground: var(--color-text);
+  --button_hover--color-background: #bdd6d6;
+  --button_hover--color-foreground: var(--color-text);
+  --button--padding: 10px 20px;
+  --button--border-radius: var(--border-radius);
+
+  --input--padding: 4px;
+  --input--color-background: transparent;
+  --input--color-text: var(--color-text);
+
+
+  --slider--color-background: var(--color-text);
+  --slider--color-foreground: var(--color-text);
+
+  --slider--knob-width: 20px;
+  --slider--knob-height: 20px;
+  --slider--knob-radius: 100%;
+
+  --slider--track-height: 2px;
+  --slider--track-radius: 0px;
+  --slider--track-border-width: 0px;
+  --slider--track-border-color: transparent;
+
+  --potentiometer--color: var(--color-text);
+}

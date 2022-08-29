@@ -1,0 +1,12 @@
+.text {
+  input[type="text"] {
+    padding: 0.5rem 0;
+    color: #f39600;
+    border-color: #f39600;
+    border-bottom: 2px solid currentColor;
+
+    &:focus {
+      border-bottom: 2px solid currentColor;
+    }
+  }
+}

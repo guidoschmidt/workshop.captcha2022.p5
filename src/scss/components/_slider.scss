@@ -1,0 +1,137 @@
+// Referenz implementation:
+// Styling Cross-Browser Compatible Range Inputs with Sass
+// Github: https://github.com/darlanrod/input-range-sass
+// Author: Darlan Rod https://github.com/darlanrod
+
+.slider {
+  grid-column: span 2;
+
+  @mixin track {
+    cursor: default;
+    height: var(--slider--track-height);
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+
+  @mixin thumb {
+    background: var(--slider--color-foreground);
+    border-radius: var(--slider--knob-radius);
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: var(--slider--knob-height);
+    width: var(--slider--knob-width);
+    transition: transform 200ms ease;
+  }
+
+  .text-value {
+    opacity: 0.5;
+    font-weight: 200;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: var(--slider--knob-height);
+    margin: 8px 0;
+
+    &:hover {
+      &::-moz-range-thumb,
+      &::-webkit-slider-thumb {
+        // transform: scaleY(1.5);
+      }
+    }
+
+    &::-moz-focus-outer {
+      border: 0;
+    }
+
+    &:focus {
+      outline: 0;
+
+      &::-webkit-slider-runnable-track {
+        background: var(--slider--color-background);
+      }
+
+      &::-ms-fill-lower {
+        background: var(--slider--color-background);
+      }
+
+      &::-ms-fill-upper {
+        background: var(--slider--color-background);
+      }
+    }
+
+    &::-webkit-slider-runnable-track {
+      @include track;
+      background: var(--slider--color-background);
+      border: var(--slider--track-border-width) solid
+        var(--slider--track-border-color);
+      border-radius: var(--slider--track-radius);
+    }
+
+    &::-webkit-slider-thumb {
+      @include thumb;
+      -webkit-appearance: none;
+      margin-top: calc(
+        -0.5 * (var(--slider--knob-height) - var(--slider--track-height)) + -1 *
+          var(--slider--track-border-width)
+      );
+    }
+
+    &::-moz-range-track {
+      @include track;
+      box-sizing: border-box;
+      background: var(--slider--color-background);
+      border: var(--slider--track-border-width) solid
+        var(--slider--track-border-color);
+      border-radius: var(--slider--track-radius);
+      height: var(--slider--track-height);
+    }
+
+    &::-moz-range-thumb {
+      @include thumb;
+    }
+
+    &::-ms-track {
+      @include track;
+      background: transparent;
+      border-color: transparent;
+      border-width: (var(--slider--knob-height) / 2) 0;
+      color: transparent;
+    }
+
+    &::-ms-fill-lower {
+      border: var(--slider--track-border-width) solid
+        var(--slider--track-border-color);
+      border-radius: calc(var(--slider--track-radius) * 2);
+    }
+
+    &::-ms-fill-upper {
+      background: var(--slider--color-background);
+      border: var(--slider--track-border-width) solid
+        var(--slider--track-border-color);
+      border-radius: calc(var(--slider--track-radius) * 2);
+    }
+
+    &::-ms-thumb {
+      @include thumb;
+      margin-top: calc(var(--slider--track-height) / 4);
+    }
+
+    &:disabled {
+      &::-webkit-slider-thumb,
+      &::-moz-range-thumb,
+      &::-ms-thumb,
+      &::-webkit-slider-runnable-track,
+      &::-ms-fill-lower,
+      &::-ms-fill-upper {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

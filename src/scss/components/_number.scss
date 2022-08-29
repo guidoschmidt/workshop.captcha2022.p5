@@ -1,0 +1,38 @@
+.number {
+  input[type="number"] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    text-align: center;
+    width: 100%;
+    color: var(--input--color-text);
+    background: var(--input--color-background);
+  }
+
+  .input-field {
+    max-width: 100%;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+  }
+
+  button {
+    text-transform: uppercase;
+    background: var(--button--color-background);
+    color: var(--button--color-foreground);
+    border: 0;
+    font-size: var(--font-size);
+    padding: var(--button--padding);
+    border-radius: var(--button--border-radius);
+    transition: background 200ms ease,
+                color 200ms ease;
+    &:hover {
+      background: var(--button_hover--color-background);
+      color: var(--button_hover--color-foreground);
+    }
+    &:active,
+    &:focus {
+      border: 0;
+      outline: 0;
+    }
+  }
+}

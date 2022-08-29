@@ -1,0 +1,43 @@
+.potentiometer {
+  --size: 30px;
+
+  grid-column: span 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .knob-wrapper {
+    padding: 10px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      .knob {
+        .angle-indicator {
+          transform: translateY(7px);
+        }
+      }
+    }
+
+    .knob {
+      margin: 5px 0;
+      width: var(--size);
+      height: var(--size);
+      background: var(--potentiometer--color);
+      border-radius: var(--size);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .angle-indicator {
+        background: var(--potentiometer--color);
+        height: var(--size);
+        width: 5px;
+        transition: transform 200ms ease;
+        transform: translateY(3px);
+      }
+    }
+  }
+}
