@@ -8,6 +8,18 @@ const settings = {
 
   ["@seed.component"]: "slider",
   seed: 0,
+
+  ["@controlPointX.component"]: "slider",
+  ["@controlPointX.min"]: 0.0,
+  ["@controlPointX.max"]: 1.0,
+  ["@controlPointX.step"]: 0.01,
+  controlPointX: 0.25,
+
+  ["@controlPointY.component"]: "slider",
+  ["@controlPointY.min"]: -1.0,
+  ["@controlPointY.max"]: 1.0,
+  ["@controlPointY.step"]: 0.01,
+  controlPointY: 0.5,
 };
 
 let ui;
@@ -28,10 +40,30 @@ function draw() {
   background(0);
   fill(255);
 
-  gfx.background(128);
-  gfx.fill(255, 0, 0);
-  gfx.rect(0, 0, 300, 300);
+  gfx.clear();
+  gfx.background(0);
+  gfx.noStroke();
+  gfx.fill(255);
+  gfx.beginShape();
+  gfx.vertex(width / 4, -height / 2);
 
-  image(gfx, -width / 2, -height/ 2, width /2, height);
-  image(gfx, width/2, -height/ 2, -width /2, height);
+  // To draw a triangle, use 3 vertices
+  //gfx.vertex(width/4 - 300, 0);
+  //gfx.vertex(width/4, height / 2)
+
+  // To draw a curve, use 1 vertex and 1 bezierVertex
+  const { controlPointX, controlPointY } = settings;
+  gfx.bezierVertex(
+    width / 4,
+    -height / 2,
+    width / 4 - controlPointX * width,
+    (controlPointY * height) / 2,
+    width / 4,
+    height / 2
+  );
+
+  gfx.endShape();
+
+  image(gfx, -width / 2, -height / 2, width / 2, height);
+  image(gfx, width / 2, -height / 2, -width / 2, height);
 }
