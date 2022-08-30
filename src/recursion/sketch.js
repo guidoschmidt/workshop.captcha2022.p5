@@ -5,18 +5,22 @@ const settings = {
     ui.downloadConfiguration(name);
     saveCanvas(`${name}`, "png");
   },
-
+  ["@backgroundColor.component"]: "color",
+  backgroundColor: "#202433",
   seed: 0,
-  maxRecursion: 5,
-  minWidth: 100,
-
+  maxRecursion: 40,
+  ["@minWidth.component"]: "slider",
+  ["@minWidth.min"]: 0,
+  ["@minWidth.max"]: 1000,
+  minWidth: 50,
   ["@maxWidth.component"]: "slider",
-  maxWidth: 100,
-
+  ["@maxWidth.min"]: 0,
+  ["@maxWidth.max"]: 1000,
+  maxWidth: 350,
   ["@colorA.component"]: "color",
-  colorA: "#ff0000",
+  colorA: "#ca8989",
   ["@colorB.component"]: "color",
-  colorB: "#00ff00",
+  colorB: "#1e7b96",
 };
 
 let ui;
@@ -30,8 +34,6 @@ function setup() {
 }
 
 function recurse(iteration) {
-  console.log("Rekursion", iteration);
-
   // Abbruchbedingung
   if (iteration > settings.maxRecursion) {
     return;
@@ -43,26 +45,27 @@ function recurse(iteration) {
   const t = iteration / settings.maxRecursion;
 
   // Linear interpolation of width
-  const w = lerp(settings.minWidth, settings.maxWidth / 100 * 1000, t);
-  const h = 100;
+  const { minWidth, maxWidth } = settings;
+  const w =
+    round(lerp(minWidth, maxWidth, sin(t * PI))) + random(-minWidth, maxWidth);
+  const h = height / settings.maxRecursion;
   const y = t * height;
+  const x = -w / 2;
 
   // Linear interpolation of color
-  const c = lerpColor(color(settings.colorA), 
-                      color(settings.colorB), 
-                      t);
+  const c = lerpColor(color(settings.colorA), color(settings.colorB), t);
 
   fill(c);
-  rect(-w / 2, y - height / 2, w, h);
+  rect(x, y - height / 2, w, h);
 
   // Eigtl. Rekursion
-  recurse(iteration + 1); 
+  recurse(iteration + 1);
 }
 
 function draw() {
   randomSeed(settings.seed);
   clear();
-  background(0);
+  background(settings.backgroundColor);
   fill(255);
   noStroke();
   recurse(0);
