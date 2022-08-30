@@ -13,7 +13,7 @@ const settings = {
   ["@controlPointX.min"]: 0.0,
   ["@controlPointX.max"]: 1.0,
   ["@controlPointX.step"]: 0.01,
-  controlPointX: 0.25,
+  controlPointX: 0.55,
 
   ["@controlPointY.component"]: "slider",
   ["@controlPointY.min"]: -1.0,
