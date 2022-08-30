@@ -5,24 +5,19 @@ const settings = {
     ui.downloadConfiguration(name);
     saveCanvas(`${name}`, "png");
   },
-
-  button: () => {console.log("TEST")}, 
-
-  ["@seed.component"]: "slider",
   seed: 0,
-
   ["@w.component"]: "slider",
   w: 100,
   ["@h.component"]: "slider",
   h: 100,
 
-  pointCount: 100,
+  pointCount: 50,
 
   noiseSettings: {
     ["@noiseScale.component"]: "slider",
-    noiseScale: 1,
-    noiseHeight: 50
-  }
+    noiseScale: 30,
+    noiseHeight: 200,
+  },
 };
 
 let ui;
@@ -37,6 +32,8 @@ function setup() {
 
 function draw() {
   randomSeed(settings.seed);
+  noiseSeed(settings.seed);
+
   clear();
   background(0);
   fill(255);
@@ -45,21 +42,21 @@ function draw() {
 
   //rotate(radians(90));
   // Short
-  const { w, h, pointCount, 
-    noiseSettings: { 
-      noiseHeight, 
-      noiseScale 
-    } 
+  const {
+    w,
+    h,
+    pointCount,
+    noiseSettings: { noiseHeight, noiseScale },
   } = settings;
-  const rectangleWidth = w / 100 * 400;
-  const rectangleHeight = h / 100 * 200;
+  const rectangleWidth = (w / 100) * 400;
+  const rectangleHeight = (h / 100) * 200;
   const startX = -rectangleWidth / 2;
 
   beginShape(TRIANGLE_STRIP);
   vertex(startX, rectangleHeight);
-  for(let i = 0; i < pointCount; i++) {
+  for (let i = 0; i < pointCount; i++) {
     const i0 = i / pointCount;
-    const y = -noise(i * map(noiseScale, 0, 100, -0.10, 0.10)) * noiseHeight;
+    const y = -noise(i * map(noiseScale, 0, 100, -0.1, 0.1)) * noiseHeight;
     const vertexStep = i0 * rectangleWidth;
     vertex(startX + vertexStep, y);
     vertex(startX + vertexStep, rectangleHeight);
