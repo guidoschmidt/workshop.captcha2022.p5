@@ -31,23 +31,22 @@ function preload() {
   images.push(loadImage("/butterfly.webp"));
   images.push(loadImage("/coffee.webp"));
   images.push(loadImage("/terrazzo.webp"));
+  images.push(loadImage("/braid.webp"));
   TexturedShape.preload()
 }
 
 function setup() {
   createCanvas(800, 800, WEBGL);
   setAttributes("antialias", true);
-  noLoop();
+  //noLoop();
   ui = new P5Gui();
-  ui.build("TEMPLATE", settings);
+  ui.build("Textured Shapes", settings);
 }
 
 function recurse(iteration) {
   // Abbruchbedingung
   if (iteration > settings.maxRecursion) {
     return;
-  }
-  if (iteration === 0) {
   }
 
   // maxRecursion: 5
@@ -65,15 +64,15 @@ function recurse(iteration) {
   const x = -w / 2;
 
   // Linear interpolation of color
-  const c = lerpColor(color(settings.colorA), color(settings.colorB), t);
+  const c = lerpColor(color(settings.colorA), color(settings.colorB), t + random(-0.5, 0.5));
 
-
-  //randomSeed(settings.textureSeed);
   push();
+  //rotate(radians(iteration * 10))
   translate(0, -height/2);
   let shape = new TexturedShape();
+  shape.setAngle(radians(random(-180, 180)));
   shape.fill(c);
-  const imageIndex = round(noise(iteration * 100) * 2);
+  const imageIndex = round(random(0, images.length));
   console.log(imageIndex);
   const img = images[imageIndex];
   shape.setTexture(img);

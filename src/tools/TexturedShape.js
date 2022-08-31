@@ -17,7 +17,12 @@ class TexturedShape {
     this.uniformOffset = createVector(0, 0);
     this.color = color(255, 255, 255);
     this.img = undefined;
+    this.angle = 0;
     if (imageUrl) this.loadTexture(imageUrl);
+  }
+
+  setAngle(a) {
+    this.angle = a;
   }
 
   setTexture(img) {
@@ -73,6 +78,10 @@ class TexturedShape {
           "u_has_texture",
           this.img !== undefined
         );
+        TexturedShape.shaderProgram.setUniform(
+          "u_angle",
+          this.angle
+        );
         this.img &&
           TexturedShape.shaderProgram.setUniform("u_texture", this.img);
           TexturedShape.shaderProgram.setUniform("u_color", [
@@ -109,6 +118,10 @@ class TexturedShape {
         this.resolution.x,
         this.resolution.y,
       ]);
+      TexturedShape.shaderProgram.setUniform(
+        "u_angle",
+        this.angle
+      );
       TexturedShape.shaderProgram.setUniform(
         "u_has_texture",
         this.img !== undefined
