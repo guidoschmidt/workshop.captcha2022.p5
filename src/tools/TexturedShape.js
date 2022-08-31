@@ -75,11 +75,11 @@ class TexturedShape {
         );
         this.img &&
           TexturedShape.shaderProgram.setUniform("u_texture", this.img);
-        TexturedShape.shaderProgram.setUniform("u_color", [
-          red(this.color) / 255,
-          green(this.color) / 255,
-          blue(this.color) / 255,
-        ]);
+          TexturedShape.shaderProgram.setUniform("u_color", [
+            red(this.color) / 255,
+            green(this.color) / 255,
+            blue(this.color) / 255,
+          ]);
       }
       gfx.beginShape();
       if (this.img) {

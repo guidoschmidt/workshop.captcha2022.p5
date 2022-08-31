@@ -46,7 +46,7 @@ function draw() {
   gfx.fill(255);
   gfx.beginShape();
   gfx.vertex(width / 4, -height / 2);
-
+  
   // To draw a triangle, use 3 vertices
   //gfx.vertex(width/4 - 300, 0);
   //gfx.vertex(width/4, height / 2)
