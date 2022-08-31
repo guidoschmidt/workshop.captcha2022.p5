@@ -15,17 +15,16 @@ class TexturedShape {
     this.resolution = createVector(512, 512);
     this.offset = createVector(0, 0);
     this.uniformOffset = createVector(0, 0);
-    this.position = createVector(0, 0);
     this.color = color(255, 255, 255);
     this.img = undefined;
     if (imageUrl) this.loadTexture(imageUrl);
   }
 
-  setImage(img) {
+  setTexture(img) {
     this.img = img;
   }
 
-  scale(x, y) {
+  scaleTexture(x, y) {
     this.resolution.x = x;
     this.resolution.y = y;
   }
@@ -34,10 +33,6 @@ class TexturedShape {
     this.vertices = [];
   }
 
-  translate(x, y) {
-    this.position.x = x;
-    this.position.y = y;
-  }
 
   fill(c) {
     this.color = c;
@@ -68,7 +63,6 @@ class TexturedShape {
   draw(gfx) {
     if (gfx !== undefined) {
       gfx.push();
-      gfx.translate(this.position.x, this.position.y);
       if (TexturedShape.shaderProgram) {
         gfx.shader(TexturedShape.shaderProgram);
         TexturedShape.shaderProgram.setUniform("u_resolution", [
@@ -109,7 +103,6 @@ class TexturedShape {
       return;
     }
     push();
-    translate(this.position.x, this.position.y);
     if (TexturedShape.shaderProgram) {
       shader(TexturedShape.shaderProgram);
       TexturedShape.shaderProgram.setUniform("u_resolution", [
