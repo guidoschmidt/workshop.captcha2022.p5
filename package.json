@@ -1,7 +1,6 @@
 {
   "name": "workshop.captcha2022.p5",
   "version": "0.0.1",
-  "main": "index.js",
   "repository": "git@github.com:guidoschmidt/workshop.captcha2022.p5.git",
   "author": "Guido Schmidt <git@guidoschmidt.cc>",
   "license": "MIT",

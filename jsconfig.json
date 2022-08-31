@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "$libs": ["src/p5"],
+      "$libs/*": ["src/p5/*"],
+    }
+  },
+  "include": [
+    "src/**/*.js", 
+    "src/p5/types/global.d.ts"
+  ],
+  "exclude": ["node_modules", "**/node_modules", "dist"]
+}
