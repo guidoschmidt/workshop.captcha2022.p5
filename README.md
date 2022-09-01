@@ -48,4 +48,15 @@ project manager, like [npm](https://nodejs.org/en/knowledge/getting-started/npm/
 ---
 ### Build Project 
 To put the project with all its sketches on a web server, you have to build it first using
-`npm run build` or `yarn build`. This will produce a `htdocs` folder, you can put e.g. into a [MAMPP](https://www.mamp.info/de) htdocs folder.
+`npm run build` or `yarn build`. This will produce a `htdocs` folder, which can be served by a web server like [MAMPP](https://www.mamp.info/de).
+
+During the workshop we were using a simple portable webserver, called [caddy](https://github.com/caddyserver/caddy). The [`start-server`](htdocs/start-server) command in `/htdocs` is simply that webserver executable/binary, but renamed to `start-server` for better comprehensability.
+
+To run the project on another machine, e.g. on the Mac Minis of the University of Applied Sciences Mannheim:
+- `npm run build` on your local machine (laptop, desktop). This will produce a bundled website in the `htdocs` folder
+- You can move the `htdocs` folder to another web server or machine:
+  - Put `htdocs` onto an USB stick
+  - Copy the `htdocs` folder somewhere on the new machine, e.g. `Desktop/captcha/htdocs`
+  - Use the terminal (shell) to move to that directory, e.g. `cd Desktop/captcha/htdocs`
+  - Run `./start-server` (on older macs. If your target machine already runs a M1 machine, use `./start-server-m1-macs`)
+  - The server should start and you can open [http://localhost:2015](http://localhost:2015) in a browser
