@@ -41,7 +41,9 @@ const settings = {
 let images = [];
 
 function preload() {
-  for (let i = 0; i < 60; i++) {
+  const start = round(random(0, 25));
+  const end = round(random(start, 63));
+  for (let i = start; i < end; i++) {
     images.push(loadImage(`/textures/not-seamless/${i}.webp`));
   }
   TexturedShape.preload();
