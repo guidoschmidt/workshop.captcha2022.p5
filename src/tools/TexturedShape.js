@@ -11,6 +11,7 @@ class TexturedShape {
 
   constructor(imageUrl) {
     this.vertices = [];
+    this.shapes = [];
     this.mouse = createVector(0, 0);
     this.resolution = createVector(512, 512);
     this.offset = createVector(0, 0);
@@ -38,6 +39,17 @@ class TexturedShape {
     this.vertices = [];
   }
 
+  rect(x, y, w, h) {
+    this.shapes.push({ t: "rect", x, y, w, h });
+  }
+
+  ellipse(x, y, r1, r2) {
+    this.shapes.push({ t: "ellipse", x, y, r1, r2 });
+  }
+
+  circle(x, y, r1) {
+    this.shapes.push({ t: "ellipse", x, y, r1, r2: r1 });
+  }
 
   fill(c) {
     this.color = c;
@@ -78,17 +90,14 @@ class TexturedShape {
           "u_has_texture",
           this.img !== undefined
         );
-        TexturedShape.shaderProgram.setUniform(
-          "u_angle",
-          this.angle
-        );
+        TexturedShape.shaderProgram.setUniform("u_angle", this.angle);
         this.img &&
           TexturedShape.shaderProgram.setUniform("u_texture", this.img);
-          TexturedShape.shaderProgram.setUniform("u_color", [
-            red(this.color) / 255,
-            green(this.color) / 255,
-            blue(this.color) / 255,
-          ]);
+        TexturedShape.shaderProgram.setUniform("u_color", [
+          red(this.color) / 255,
+          green(this.color) / 255,
+          blue(this.color) / 255,
+        ]);
       }
       gfx.beginShape();
       if (this.img) {
@@ -118,10 +127,7 @@ class TexturedShape {
         this.resolution.x,
         this.resolution.y,
       ]);
-      TexturedShape.shaderProgram.setUniform(
-        "u_angle",
-        this.angle
-      );
+      TexturedShape.shaderProgram.setUniform("u_angle", this.angle);
       TexturedShape.shaderProgram.setUniform(
         "u_has_texture",
         this.img !== undefined
@@ -154,6 +160,20 @@ class TexturedShape {
       }
     }
     endShape(CLOSE);
+
+    this.shapes.forEach((shape) => {
+      switch (shape.t) {
+        case "rect": {
+          const { x, y, w, h } = shape;
+          rect(x, y, w, h);
+        }
+        case "ellipse": {
+          const { x, y, r1, r2 } = shape;
+          ellipse(x, y, r1, r2);
+        }
+      }
+    });
+
     resetShader();
     pop();
   }

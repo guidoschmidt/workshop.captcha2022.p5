@@ -17,6 +17,9 @@ const settings = {
 
   maxIteration: 3,
 
+  ["@backgroundColor.component"]: "color",
+  backgroundColor: "#ffb420",
+
   startAudio: () => {
     mic = new p5.AudioIn((err) => {
       console.error(`Could not create audio in: `, err);
@@ -32,14 +35,14 @@ const settings = {
 
   fullscreen: () => {
     document.querySelector("canvas").requestFullscreen();
-  }
+  },
 };
 
 let images = [];
 
 function preload() {
-  for (let i = 0; i < 22; i++) {
-    images.push(loadImage(`/guido/${i}.jpg`));
+  for (let i = 0; i < 60; i++) {
+    images.push(loadImage(`/textures/not-seamless/${i}.webp`));
   }
   TexturedShape.preload();
 }
@@ -61,7 +64,7 @@ function drawStory(iteration, x, y, w, h) {
     push();
     noStroke();
     translate(x, y);
-    fill(random(128, 255));
+    fill(0);
     triangle(0, 0, w, 0, w / 2, -h * audioVal);
     pop();
     return;
@@ -73,8 +76,22 @@ function drawStory(iteration, x, y, w, h) {
   translate(x, y);
   const shape = new TexturedShape();
   const imgIndex = round(random(0, images.length));
+
+  const fillColor = lerpColor(
+    color(settings.backgroundColor),
+    color(255),
+    random(0, 1)
+  );
+
+  let audioVal = 1;
+  if (spectrum) {
+    audioVal = map(spectrum[round(random(0, spectrumSize))], 0, 255, 0.1, 1);
+  }
+
   shape.setTexture(images[imgIndex]);
-  shape.fill(255);
+  const textureScale = 512 + audioVal * 512;
+  shape.scaleTexture(textureScale, textureScale);
+  shape.fill(fillColor);
   shape.vertex(w, 0);
   shape.vertex(w, -h);
   shape.vertex(0, -h);
@@ -83,22 +100,19 @@ function drawStory(iteration, x, y, w, h) {
   pop();
 
   // Recursion
-  let audioVal = 1;
-  if (spectrum) {
-    audioVal = map(spectrum[round(random(0, spectrumSize))], 0, 255, 0.1, 1);
-  }
   drawStory(iteration + 1, x, y - h, w, random(10, 200) * audioVal);
 }
 
 function draw() {
-  const { spectrumSize } = settings;
+  const { spectrumSize, backgroundColor, seed } = settings;
 
-  randomSeed(settings.seed);
+  randomSeed(seed);
   clear();
-  background(0);
+  background(backgroundColor);
   fill(255);
 
   push();
+  scale(0.8);
   translate(0, height / 2);
   for (let i = 0; i < spectrumSize; i++) {
     let x = map(i, 0, spectrumSize, -width / 2, width / 2);

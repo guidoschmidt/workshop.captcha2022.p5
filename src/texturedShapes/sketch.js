@@ -6,9 +6,9 @@ const settings = {
     saveCanvas(`${name}`, "png");
   },
   ["@backgroundColor.component"]: "color",
-  backgroundColor: "#202433",
+  backgroundColor: "#af1800",
   rectangleSeed: 0,
-  maxRecursion: 20,
+  maxRecursion: 30,
   ["@minWidth.component"]: "slider",
   ["@minWidth.min"]: 0,
   ["@minWidth.max"]: 1000,
@@ -18,26 +18,27 @@ const settings = {
   ["@maxWidth.max"]: 1000,
   maxWidth: 350,
   ["@colorA.component"]: "color",
-  colorA: "#ca8989",
+  colorA: "#ff4920",
   ["@colorB.component"]: "color",
-  colorB: "#1e7b96",
+  colorB: "#204dff",
 };
 
 let ui;
 let images = [];
 
 function preload() {
-  images.push(loadImage("/butterfly.webp"));
-  images.push(loadImage("/coffee.webp"));
-  images.push(loadImage("/terrazzo.webp"));
-  images.push(loadImage("/braid.webp"));
+  images.push(loadImage("/textures/seamless/16.webp"));
+  images.push(loadImage("/textures/seamless/17.webp"));
+  images.push(loadImage("/textures/seamless/28.webp"));
+  images.push(loadImage("/textures/seamless/38.webp"));
+  images.push(loadImage("/textures/seamless/43.webp"));
+  images.push(loadImage("/textures/seamless/44.webp"));
   TexturedShape.preload();
 }
 
 function setup() {
   createCanvas(800, 800, WEBGL);
   setAttributes("antialias", true);
-  //noLoop();
   ui = new P5Gui();
   ui.build("Textured Shapes", settings);
 }
@@ -74,7 +75,7 @@ function recurse(iteration) {
   let shape = new TexturedShape();
   shape.setAngle(radians(random(-180, 180)));
   shape.fill(c);
-  const imageIndex = round(random(0, images.length));
+  const imageIndex = round(random(0, images.length - 1));
   console.log(imageIndex);
   const img = images[imageIndex];
   shape.setTexture(img);
@@ -90,7 +91,7 @@ function recurse(iteration) {
 }
 
 function draw() {
-  randomSeed(settings.rectangleSeed);
+  randomSeed(settings.rectangleSeed + frameCount / 60);
 
   clear();
   background(settings.backgroundColor);

@@ -6,9 +6,6 @@ const settings = {
     saveCanvas(`${name}`, "png");
   },
 
-  ["@seed.component"]: "slider",
-  seed: 0,
-
   ["@controlPointX.component"]: "slider",
   ["@controlPointX.min"]: 0.0,
   ["@controlPointX.max"]: 1.0,

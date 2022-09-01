@@ -55,6 +55,7 @@ function draw() {
   translate(-width / 2, height / 2);
   let audioVal = 1;
   fill(200);
+  noStroke();
   const step = width / spectrumSize;
   for (let i = 0; i < spectrumSize; i++) {
     if (spectrum) {
@@ -62,6 +63,4 @@ function draw() {
     }
     rect(i * step, 0, step, -100 * audioVal);
   }
-
-  
 }
