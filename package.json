@@ -20,7 +20,7 @@
     "staticPath": "public"
   },
   "scripts": {
-    "dev": "parcel ./src/index.html --open",
+    "dev": "vite",
     "build": "parcel build ./src/index.html --dist-dir htdocs"
   },
   "devDependencies": {
@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@parcel/transformer-glsl": "^2.7.0",
-    "parcel": "2.7.0",
     "parcel-reporter-static-files-copy": "^1.4.0",
-    "sass": "^1.54.8"
+    "sass": "^1.54.8",
+    "vite": "^3.0.9"
   }
 }
