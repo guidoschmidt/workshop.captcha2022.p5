@@ -1,8 +1,8 @@
 class TexturedShape {
   static preload() {
     loadShader(
-      "/tools/TexturedShape.vert",
-      "/tools/TexturedShape.frag",
+      "/shader/TexturedShape.vert",
+      "/shader/TexturedShape.frag",
       (s) => {
         this.shaderProgram = s;
       }

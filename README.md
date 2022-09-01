@@ -38,10 +38,14 @@ prefer working with the online editor.
 To run this project on your device, you will need to have
 [node.js](https://nodejs.org) installed.
 
-The project setup uses [vite.js](https://vitejs.dev/) to provide hot-code
+The project setup uses [parcel.js](https://parceljs.org) to provide hot-code
 reloading. To install all the necesarry dependencies, use your favourite node.js
 project manager, like [npm](https://nodejs.org/en/knowledge/getting-started/npm/what-is-npm/) or [yarn](https://yarnpkg.com/)
 
 - `yarn install` or `npm install` to install necesarry tools and packages
 - `yarn dev` or `npm run dev` to spin up the development server (start the project)
 
+---
+### Build Project 
+To put the project with all its sketches on a web server, you have to build it first using
+`npm run build` or `yarn build`. This will produce a `htdocs` folder, you can put e.g. into a [MAMPP](https://www.mamp.info/de) htdocs folder.

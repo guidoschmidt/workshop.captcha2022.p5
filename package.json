@@ -16,13 +16,20 @@
     "programmed design",
     "generative gestaltung"
   ],
+  "staticFiles": {
+    "staticPath": "public"
+  },
   "scripts": {
-    "dev": "vite"
+    "dev": "parcel ./src/index.html --open",
+    "build": "parcel build ./src/index.html --dist-dir htdocs"
   },
   "devDependencies": {
-    "vite": "^2.9.14"
+    "@parcel/transformer-sass": "2.7.0"
   },
   "dependencies": {
-    "sass": "^1.54.5"
+    "@parcel/transformer-glsl": "^2.7.0",
+    "parcel": "2.7.0",
+    "parcel-reporter-static-files-copy": "^1.4.0",
+    "sass": "^1.54.8"
   }
 }

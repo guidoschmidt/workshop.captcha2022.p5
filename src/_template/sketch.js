@@ -5,6 +5,9 @@ const settings = {
     ui.downloadConfiguration(name);
     saveCanvas(`${name}`, ".png");
   },
+  fullscreen: () => {
+    document.querySelector("canvas").requestFullscreen();
+  }
 };
 
 let ui;
