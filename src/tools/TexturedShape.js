@@ -142,7 +142,11 @@ class TexturedShape {
       const { t } = this.vertices[i];
       if (t === "vertex") {
         const { x, y, u, v } = this.vertices[i];
-        vertex(x, y, u, v);
+        if (u && v) {
+          vertex(x, y, u, v);
+        } else {
+          vertex(x, y);
+        }
       }
       if (t === "bezierVertex") {
         const { x1, y1, cx, cy, x2, y2 } = this.vertices[i];

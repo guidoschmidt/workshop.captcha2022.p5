@@ -11,7 +11,7 @@ const settings = {
 
   startAudio: () => {
     mic = new p5.AudioIn((err) => {
-      console.log(err)
+      console.error(`Could not create audio in: `, err)
     });
     mic.start();
   },

@@ -8,7 +8,6 @@ const settings = {
   ["@backgroundColor.component"]: "color",
   backgroundColor: "#202433",
   rectangleSeed: 0,
-  textureSeed: 0,
   maxRecursion: 20,
   ["@minWidth.component"]: "slider",
   ["@minWidth.min"]: 0,
@@ -32,7 +31,7 @@ function preload() {
   images.push(loadImage("/coffee.webp"));
   images.push(loadImage("/terrazzo.webp"));
   images.push(loadImage("/braid.webp"));
-  TexturedShape.preload()
+  TexturedShape.preload();
 }
 
 function setup() {
@@ -56,19 +55,22 @@ function recurse(iteration) {
 
   // Linear interpolation of width
   const { minWidth, maxWidth } = settings;
-  const randomWidth = + random(-minWidth, maxWidth);
-  const w =
-    round(lerp(minWidth, maxWidth, sin(t * PI)))  + randomWidth;
+  const randomWidth = +random(-minWidth, maxWidth);
+  const w = round(lerp(minWidth, maxWidth, sin(t * PI))) + randomWidth;
   const h = height / settings.maxRecursion;
   const y = t * height;
   const x = -w / 2;
 
   // Linear interpolation of color
-  const c = lerpColor(color(settings.colorA), color(settings.colorB), t + random(-0.5, 0.5));
+  const c = lerpColor(
+    color(settings.colorA),
+    color(settings.colorB),
+    t + random(-0.5, 0.5)
+  );
 
   push();
   //rotate(radians(iteration * 10))
-  translate(0, -height/2);
+  translate(0, -height / 2);
   let shape = new TexturedShape();
   shape.setAngle(radians(random(-180, 180)));
   shape.fill(c);
@@ -89,7 +91,6 @@ function recurse(iteration) {
 
 function draw() {
   randomSeed(settings.rectangleSeed);
-  noiseSeed(settings.textureSeed);
 
   clear();
   background(settings.backgroundColor);

@@ -7,12 +7,12 @@ function j(g) {
     t.prototype = s.prototype;
   } else
     t = {};
-  return Object.defineProperty(t, "__esModule", { value: !0 }), Object.keys(g).forEach(function(e) {
-    var l = Object.getOwnPropertyDescriptor(g, e);
-    Object.defineProperty(t, e, l.get ? l : {
+  return Object.defineProperty(t, "__esModule", { value: !0 }), Object.keys(g).forEach(function(n) {
+    var l = Object.getOwnPropertyDescriptor(g, n);
+    Object.defineProperty(t, n, l.get ? l : {
       enumerable: !0,
       get: function() {
-        return g[e];
+        return g[n];
       }
     });
   }), t;
@@ -25,17 +25,17 @@ var v = { exports: {} };
  * ECMAScript compliant, uniform cross-browser split method
  */
 var U = function(s) {
-  var t = String.prototype.split, e = /()??/.exec("")[1] === s, l;
-  return l = function(n, i, u) {
+  var t = String.prototype.split, n = /()??/.exec("")[1] === s, l;
+  return l = function(e, i, u) {
     if (Object.prototype.toString.call(i) !== "[object RegExp]")
-      return t.call(n, i, u);
+      return t.call(e, i, u);
     var r = [], f = (i.ignoreCase ? "i" : "") + (i.multiline ? "m" : "") + (i.extended ? "x" : "") + (i.sticky ? "y" : ""), d = 0, i = new RegExp(i.source, f + "g"), x, h, y, _;
-    for (n += "", e || (x = new RegExp("^" + i.source + "$(?!\\s)", f)), u = u === s ? -1 >>> 0 : u >>> 0; (h = i.exec(n)) && (y = h.index + h[0].length, !(y > d && (r.push(n.slice(d, h.index)), !e && h.length > 1 && h[0].replace(x, function() {
+    for (e += "", n || (x = new RegExp("^" + i.source + "$(?!\\s)", f)), u = u === s ? -1 >>> 0 : u >>> 0; (h = i.exec(e)) && (y = h.index + h[0].length, !(y > d && (r.push(e.slice(d, h.index)), !n && h.length > 1 && h[0].replace(x, function() {
       for (var w = 1; w < arguments.length - 2; w++)
         arguments[w] === s && (h[w] = s);
-    }), h.length > 1 && h.index < n.length && Array.prototype.push.apply(r, h.slice(1)), _ = h[0].length, d = y, r.length >= u))); )
+    }), h.length > 1 && h.index < e.length && Array.prototype.push.apply(r, h.slice(1)), _ = h[0].length, d = y, r.length >= u))); )
       i.lastIndex === h.index && i.lastIndex++;
-    return d === n.length ? (_ || !i.test("")) && r.push("") : r.push(n.slice(d)), r.length > u ? r.slice(0, u) : r;
+    return d === e.length ? (_ || !i.test("")) && r.push("") : r.push(e.slice(d)), r.length > u ? r.slice(0, u) : r;
   }, l;
 }(), q = [].indexOf, B = function(g, s) {
   if (q)
@@ -50,16 +50,16 @@ function J(g) {
   if (s)
     return s;
   var t = {
-    add: e,
+    add: n,
     remove: l,
-    contains: n,
+    contains: e,
     toggle: c,
     toString: u,
     length: 0,
     item: r
   };
   return t;
-  function e(i) {
+  function n(i) {
     var x = f();
     A(x, i) > -1 || (x.push(i), d(x));
   }
@@ -67,11 +67,11 @@ function J(g) {
     var x = f(), h = A(x, i);
     h !== -1 && (x.splice(h, 1), d(x));
   }
-  function n(i) {
+  function e(i) {
     return A(f(), i) > -1;
   }
   function c(i) {
-    return n(i) ? (l(i), !1) : (e(i), !0);
+    return e(i) ? (l(i), !1) : (n(i), !0);
   }
   function u() {
     return g.className;
@@ -93,8 +93,8 @@ function J(g) {
   }
 }
 function z(g, s) {
-  for (var t = [], e = 0; e < g.length; e++)
-    s(g[e]) && t.push(g[e]);
+  for (var t = [], n = 0; n < g.length; n++)
+    s(g[n]) && t.push(g[n]);
   return t;
 }
 function H(g) {
@@ -108,61 +108,61 @@ var Z = U, Q = G, D = typeof window > "u" ? Y : window, N = D.document, k = D.Te
 function F() {
   var g = [];
   function s() {
-    var t = [].slice.call(arguments), e = null;
-    function l(n) {
+    var t = [].slice.call(arguments), n = null;
+    function l(e) {
       var c;
       function u(i) {
         var x = Z(i, /([\.#]?[^\s#.]+)/);
-        /^\.|#/.test(x[1]) && (e = N.createElement("div")), W(x, function(h) {
+        /^\.|#/.test(x[1]) && (n = N.createElement("div")), W(x, function(h) {
           var y = h.substring(1, h.length);
-          !h || (e ? h[0] === "." ? Q(e).add(y) : h[0] === "#" && e.setAttribute("id", y) : e = N.createElement(h));
+          !h || (n ? h[0] === "." ? Q(n).add(y) : h[0] === "#" && n.setAttribute("id", y) : n = N.createElement(h));
         });
       }
-      if (n != null) {
-        if (typeof n == "string")
-          e ? e.appendChild(c = N.createTextNode(n)) : u(n);
-        else if (typeof n == "number" || typeof n == "boolean" || n instanceof Date || n instanceof RegExp)
-          e.appendChild(c = N.createTextNode(n.toString()));
-        else if (et(n))
-          W(n, l);
-        else if (R(n))
-          e.appendChild(c = n);
-        else if (n instanceof k)
-          e.appendChild(c = n);
-        else if (typeof n == "object")
-          for (var r in n)
-            if (typeof n[r] == "function")
+      if (e != null) {
+        if (typeof e == "string")
+          n ? n.appendChild(c = N.createTextNode(e)) : u(e);
+        else if (typeof e == "number" || typeof e == "boolean" || e instanceof Date || e instanceof RegExp)
+          n.appendChild(c = N.createTextNode(e.toString()));
+        else if (et(e))
+          W(e, l);
+        else if (R(e))
+          n.appendChild(c = e);
+        else if (e instanceof k)
+          n.appendChild(c = e);
+        else if (typeof e == "object")
+          for (var r in e)
+            if (typeof e[r] == "function")
               /^on\w+/.test(r) ? function(i, x) {
-                e.addEventListener ? (e.addEventListener(i.substring(2), x[i], !1), g.push(function() {
-                  e.removeEventListener(i.substring(2), x[i], !1);
-                })) : (e.attachEvent(i, x[i]), g.push(function() {
-                  e.detachEvent(i, x[i]);
+                n.addEventListener ? (n.addEventListener(i.substring(2), x[i], !1), g.push(function() {
+                  n.removeEventListener(i.substring(2), x[i], !1);
+                })) : (n.attachEvent(i, x[i]), g.push(function() {
+                  n.detachEvent(i, x[i]);
                 }));
-              }(r, n) : (e[r] = n[r](), g.push(n[r](function(i) {
-                e[r] = i;
+              }(r, e) : (n[r] = e[r](), g.push(e[r](function(i) {
+                n[r] = i;
               })));
             else if (r === "style")
-              if (typeof n[r] == "string")
-                e.style.cssText = n[r];
+              if (typeof e[r] == "string")
+                n.style.cssText = e[r];
               else
-                for (var f in n[r])
+                for (var f in e[r])
                   (function(i, x) {
                     if (typeof x == "function")
-                      e.style.setProperty(i, x()), g.push(x(function(y) {
-                        e.style.setProperty(i, y);
+                      n.style.setProperty(i, x()), g.push(x(function(y) {
+                        n.style.setProperty(i, y);
                       }));
                     else
-                      var h = n[r][i].match(/(.*)\W+!important\W*$/);
-                    h ? e.style.setProperty(i, h[1], "important") : e.style.setProperty(i, n[r][i]);
-                  })(f, n[r][f]);
+                      var h = e[r][i].match(/(.*)\W+!important\W*$/);
+                    h ? n.style.setProperty(i, h[1], "important") : n.style.setProperty(i, e[r][i]);
+                  })(f, e[r][f]);
             else if (r === "attrs")
-              for (var d in n[r])
-                e.setAttribute(d, n[r][d]);
+              for (var d in e[r])
+                n.setAttribute(d, e[r][d]);
             else
-              r.substr(0, 5) === "data-" ? e.setAttribute(r, n[r]) : e[r] = n[r];
-        else if (typeof n == "function") {
-          var d = n();
-          e.appendChild(c = R(d) ? d : N.createTextNode(d)), g.push(n(function(x) {
+              r.substr(0, 5) === "data-" ? n.setAttribute(r, e[r]) : n[r] = e[r];
+        else if (typeof e == "function") {
+          var d = e();
+          n.appendChild(c = R(d) ? d : N.createTextNode(d)), g.push(e(function(x) {
             R(x) && c.parentElement ? (c.parentElement.replaceChild(x, c), c = x) : c.textContent = x;
           }));
         }
@@ -171,7 +171,7 @@ function F() {
     }
     for (; t.length; )
       l(t.shift());
-    return e;
+    return n;
   }
   return s.cleanup = function() {
     for (var t = 0; t < g.length; t++)
@@ -202,17 +202,17 @@ var M = { exports: {} };
     function t(o, a) {
       a(o()), o(a), a(o);
     }
-    function e(o) {
+    function n(o) {
       return o === void 0;
     }
     function l(o) {
       return typeof o != "function";
     }
-    function n(o) {
+    function e(o) {
       return typeof o == "function";
     }
     function c(o) {
-      if (!n(o))
+      if (!e(o))
         throw new Error("transform expects an observable");
       return o;
     }
@@ -235,21 +235,21 @@ var M = { exports: {} };
         u(p, a = m);
       }, b;
       function b(m) {
-        return e(m) ? a : l(m) ? u(p, a = m) : (p.push(m), m(a), function() {
+        return n(m) ? a : l(m) ? u(p, a = m) : (p.push(m), m(a), function() {
           r(p, m);
         });
       }
     }
     function x(o, a) {
       return function(p) {
-        return e(p) ? o.get(a) : l(p) ? o.set(a, p) : (f(o, "change:" + a, p), p(o.get(a)), function() {
+        return n(p) ? o.get(a) : l(p) ? o.set(a, p) : (f(o, "change:" + a, p), p(o.get(a)), function() {
           d(o, "change:" + a, p);
         });
       };
     }
     function h(o, a, p) {
       return c(o), function(b) {
-        return e(b) ? a(o()) : l(b) ? o((p || a)(b)) : o(function(m) {
+        return n(b) ? a(o()) : l(b) ? o((p || a)(b)) : o(function(m) {
           b(a(m));
         });
       };
@@ -261,7 +261,7 @@ var M = { exports: {} };
     }
     function _(o, a, p, b) {
       function m() {
-        b(n(p) ? p() : o[p]);
+        b(e(p) ? p() : o[p]);
       }
       return f(o, a, m), m(), function() {
         d(o, a, m);
@@ -269,7 +269,7 @@ var M = { exports: {} };
     }
     function w(o, a, p) {
       return a = a || "value", p = p || "input", function(b) {
-        return e(b) ? o[a] : l(b) ? o[a] = b : _(o, p, a, b);
+        return n(b) ? o[a] : l(b) ? o[a] = b : _(o, p, a, b);
       };
     }
     function $(o) {
@@ -281,7 +281,7 @@ var M = { exports: {} };
           o.options[m].value == b && (o.selectedIndex = m);
       }
       return function(b) {
-        return e(b) ? o.options[o.selectedIndex].value : l(b) ? p(b) : _(o, "change", a, b);
+        return n(b) ? o.options[o.selectedIndex].value : l(b) ? p(b) : _(o, "change", a, b);
       };
     }
     function O(o, a, p) {
@@ -293,7 +293,7 @@ var M = { exports: {} };
         function T() {
           b && m(b = !1);
         }
-        return e(m) ? b : l(m) ? void 0 : (f(o, a, S), f(o, p || a, T), m(b), function() {
+        return n(m) ? b : l(m) ? void 0 : (f(o, a, S), f(o, p || a, T), m(b), function() {
           d(o, a, S), d(o, p || a, T);
         });
       };
@@ -320,7 +320,7 @@ var M = { exports: {} };
     function P() {
       var o, a = [];
       return function(p) {
-        return e(p) ? o : l(p) ? o !== p ? u(a, o = p) : "" : (a.push(p), p(o), function() {
+        return n(p) ? o : l(p) ? o !== p ? u(a, o = p) : "" : (a.push(p), p(o), function() {
           r(a, p);
         });
       };
@@ -343,10 +343,10 @@ class nt {
     localStorage.setItem(`p5.gui/${this._name}`, s);
   }
   restore() {
-    const s = (e, l) => {
-      Object.keys(l).forEach((n) => {
-        const c = e[n], u = l[n];
-        typeof c == "object" ? s(c, u) : e[n] = u;
+    const s = (n, l) => {
+      Object.keys(l).forEach((e) => {
+        const c = n[e], u = l[e];
+        typeof c == "object" ? s(c, u) : n[e] = u;
       });
     }, t = JSON.parse(
       localStorage.getItem(`p5.gui/${this._name}`)
@@ -368,16 +368,16 @@ class nt {
   refresh() {
     this.clear(), this.build(this._name, this._rootCtx);
   }
-  build(s, t, e) {
-    e === void 0 && (this._name = s, this._rootCtx = t, this._rootCtxO = E(this._rootCtx), this._rootCtxO((r) => {
+  build(s, t, n) {
+    n === void 0 && (this._name = s, this._rootCtx = t, this._rootCtxO = E(this._rootCtx), this._rootCtxO((r) => {
       this._rootCtx["@change"] && this._rootCtx["@change"]();
     }), this.addImportExportUi());
-    const l = Object.getOwnPropertyNames(t), n = E();
-    n(!0);
+    const l = Object.getOwnPropertyNames(t), e = E();
+    e(!0);
     const c = v.exports(
       "div.ui-group",
       {
-        className: `group ${n() ? "visible" : ""}`
+        className: `group ${e() ? "visible" : ""}`
       },
       v.exports(
         "label.group-name",
@@ -389,7 +389,7 @@ class nt {
         `${s}`
       )
     );
-    (e || this._rootContainer).appendChild(c);
+    (n || this._rootContainer).appendChild(c);
     const u = v.exports("div.entries");
     c.appendChild(u), l.filter((r) => r[0] !== "@").forEach((r) => {
       const f = t[r], d = t[`@${r}.component`], i = t[`@${r}.min`], x = t[`@${r}.max`], h = t[`@${r}.step`];
@@ -428,9 +428,9 @@ class nt {
   container(s, t) {
     return v.exports(`div${[".ui-container", s].join("")}`, t);
   }
-  addSlider(s, t, e, l, n, c, u) {
+  addSlider(s, t, n, l, e, c, u) {
     const r = E();
-    r(e), r((i) => {
+    r(n), r((i) => {
       this._rootCtxO(l);
     });
     const f = (i) => {
@@ -442,7 +442,7 @@ class nt {
         type: "range",
         value: r(),
         oninput: f,
-        min: n,
+        min: e,
         max: c,
         step: u
       }),
@@ -450,47 +450,47 @@ class nt {
     ]);
     s.appendChild(d);
   }
-  addButton(s, t, e, l) {
-    const n = this.container(
+  addButton(s, t, n, l) {
+    const e = this.container(
       ".button",
       v.exports(
         "button",
-        { onclick: e.bind(l) },
+        { onclick: n.bind(l) },
         this.camelCaseWithSpaces(t)
       )
     );
-    s.appendChild(n);
+    s.appendChild(e);
   }
-  addToggle(s, t, e, l) {
-    const n = E();
-    n(e);
+  addToggle(s, t, n, l) {
+    const e = E();
+    e(n);
     const c = (r) => {
-      r.target.classList.toggle("on"), n(!n()), l[t] = n();
+      r.target.classList.toggle("on"), e(!e()), l[t] = e();
     }, u = this.container(".toggle", [
       v.exports("label", { htmlFor: t }, this.camelCaseWithSpaces(t)),
       v.exports(
         "div.toggle",
         { onclick: c },
-        v.exports(`div.state.${n() ? "on" : "off"}`)
+        v.exports(`div.state.${e() ? "on" : "off"}`)
       ),
-      v.exports(`input#${t}`, { type: "checkbox", checked: e, onclick: c })
+      v.exports(`input#${t}`, { type: "checkbox", checked: n, onclick: c })
     ]);
     s.appendChild(u);
   }
-  addText(s, t, e, l) {
-    const n = E();
-    n(e), n((u) => {
+  addText(s, t, n, l) {
+    const e = E();
+    e(n), e((u) => {
       l[t] = u, this._rootCtxO(l);
     });
     const c = this.container(s, ".text", [
       v.exports("label", this.camelCaseWithSpaces(t)),
-      v.exports("input", { type: "text", value: e })
+      v.exports("input", { type: "text", value: n })
     ]);
     s.appendChild(c);
   }
-  addNumber(s, t, e, l, n) {
+  addNumber(s, t, n, l, e = 1) {
     const c = E();
-    c(e), c((d) => {
+    c(n), c((d) => {
       l[t] = d, this._rootCtxO(l);
     });
     const u = (d, i) => {
@@ -503,16 +503,16 @@ class nt {
     }, f = this.container(".number", [
       v.exports("label", this.camelCaseWithSpaces(t)),
       v.exports("div.number", [
-        v.exports("button.button", { onclick: (d) => u(d, -1) }, "-"),
-        v.exports("input.input", { type: "number", value: c(), onblur: r, step: n }),
-        v.exports("button.button", { onclick: (d) => u(d, 1) }, "+")
+        v.exports("button.button", { onclick: (d) => u(d, -e) }, "-"),
+        v.exports("input.input", { type: "number", value: c(), onblur: r, step: e }),
+        v.exports("button.button", { onclick: (d) => u(d, e) }, "+")
       ])
     ]);
     s.appendChild(f);
   }
-  addColor(s, t, e, l) {
-    const n = this.uuid(), c = E();
-    c(e), c((f) => {
+  addColor(s, t, n, l) {
+    const e = this.uuid(), c = E();
+    c(n), c((f) => {
       l[t] = c(), this._rootCtxO(l);
     });
     const u = (f) => {
@@ -524,24 +524,24 @@ class nt {
       i.style.backgroundColor = c();
     }, r = this.container(".color", [
       v.exports("label", this.camelCaseWithSpaces(t)),
-      v.exports(`input#${t}-${n}.input`, {
+      v.exports(`input#${t}-${e}.input`, {
         type: "color",
         value: c(),
         oninput: u
       }),
       v.exports(
         "label.color-preview-wrapper",
-        { htmlFor: `${t}-${n}` },
-        v.exports("div.color-preview", { style: { "background-color": e } })
+        { htmlFor: `${t}-${e}` },
+        v.exports("div.color-preview", { style: { "background-color": n } })
       ),
       v.exports("span.text-value", c)
     ]);
     s.appendChild(r);
   }
-  addPotentiometer(s, t, e, l) {
-    const n = E(), c = E();
-    n(e), n((h) => {
-      l[t] = n(), this._rootCtxO({ [t]: n() });
+  addPotentiometer(s, t, n, l) {
+    const e = E(), c = E();
+    e(n), e((h) => {
+      l[t] = e(), this._rootCtxO({ [t]: e() });
     }), c(!1);
     let u;
     const r = (h) => {
@@ -554,17 +554,17 @@ class nt {
       const a = Math.round(
         (Math.atan2(C[0], C[1]) + Math.PI) * (180 / Math.PI) / 3.6
       );
-      n(a), u ? u.style.transform = `rotate(${n() * 3.6}deg)` : u = _.querySelector(".knob");
+      e(a), u ? u.style.transform = `rotate(${e() * 3.6}deg)` : u = _.querySelector(".knob");
     }, f = () => c(!0), d = () => c(!1), i = () => c(!1), x = this.container(".potentiometer", [
       v.exports("label", this.camelCaseWithSpaces(t)),
       v.exports(
         "div.knob-wrapper",
         { onpointermove: r, onpointerdown: f, onpointerup: d, onpointerleave: i },
-        v.exports("div.knob", { style: { transform: `rotate(${n() * 3.6}deg)` } }, [
+        v.exports("div.knob", { style: { transform: `rotate(${e() * 3.6}deg)` } }, [
           v.exports("div.angle-indicator")
         ])
       ),
-      v.exports("span.text-value", n)
+      v.exports("span.text-value", e)
     ]);
     s.appendChild(x);
   }
@@ -578,7 +578,7 @@ class nt {
         const f = c[r], d = u[r];
         typeof f == "object" ? t(f, d) : c[r] = d;
       });
-    }, e = (c) => {
+    }, n = (c) => {
       const { files: u } = c.target, r = u[u.length - 1], f = new FileReader(r);
       f.onloadend = () => {
         const d = JSON.parse(f.result);
@@ -589,24 +589,24 @@ class nt {
         "label.button",
         { htmlFor: "import" },
         "Import",
-        v.exports("input#import", { type: "file", onchange: e, accept: ".json" })
+        v.exports("input#import", { type: "file", onchange: n, accept: ".json" })
       )
-    ]), n = v.exports("div.import-export", [l, s]);
-    this._rootContainer.appendChild(n);
+    ]), e = v.exports("div.import-export", [l, s]);
+    this._rootContainer.appendChild(e);
   }
   downloadConfiguration() {
-    const s = JSON.stringify(this._rootCtx), t = encodeURIComponent(s), e = document.createElement("a");
-    e.setAttribute("download", `${Date.now()}.json`), e.setAttribute("href", `data:text/json;charset=utf-8,${t}`), e.click();
+    const s = JSON.stringify(this._rootCtx), t = encodeURIComponent(s), n = document.createElement("a");
+    n.setAttribute("download", `${Date.now()}.json`), n.setAttribute("href", `data:text/json;charset=utf-8,${t}`), n.click();
   }
   static downloadCanvas(s) {
     var l;
     const t = document.querySelector(
       s || "canvas"
-    ), e = document.createElement("a");
-    e.setAttribute("download", `${Date.now()}`), e.setAttribute(
+    ), n = document.createElement("a");
+    n.setAttribute("download", `${Date.now()}`), n.setAttribute(
       "href",
       (l = t == null ? void 0 : t.toDataURL("image/png")) == null ? void 0 : l.replace("image/png", "image/octet-stream")
-    ), e.click();
+    ), n.click();
   }
   camelCaseWithSpaces(s) {
     return s.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
