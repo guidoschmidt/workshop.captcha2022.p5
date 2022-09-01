@@ -32,13 +32,6 @@ const settings = {
 
 let images = [];
 
-function preload() {
-  for (let i = 0; i < 22; i++) {
-    images.push(loadImage(`/guido/${i}.jpg`));
-  }
-  TexturedShape.preload();
-}
-
 function setup() {
   createCanvas(800, 800, WEBGL);
   setAttributes("antialias", true);
