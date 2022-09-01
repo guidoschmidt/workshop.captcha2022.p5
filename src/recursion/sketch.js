@@ -21,6 +21,9 @@ const settings = {
   colorA: "#ca8989",
   ["@colorB.component"]: "color",
   colorB: "#1e7b96",
+  fullscreen: () => {
+    document.querySelector("canvas").requestFullscreen();
+  }
 };
 
 let ui;

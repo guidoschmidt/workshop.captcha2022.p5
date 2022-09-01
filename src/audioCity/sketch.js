@@ -2,6 +2,7 @@ let ui;
 let mic;
 let fft;
 let spectrum;
+let cnv;
 
 const settings = {
   ["@change"]: () => draw(),
@@ -20,7 +21,7 @@ const settings = {
     mic = new p5.AudioIn((err) => {
       console.error(`Could not create audio in: `, err);
     });
-    fft = new p5.FFT(0.9, 16);
+    fft = new p5.FFT(0.9, settings.spectrumSize);
     mic.start();
     fft.setInput(mic);
   },
@@ -28,13 +29,17 @@ const settings = {
   stopAudio: () => {
     mic.stop();
   },
+
+  fullscreen: () => {
+    document.querySelector("canvas").requestFullscreen();
+  }
 };
 
-let images = []
+let images = [];
 
 function preload() {
   for (let i = 0; i < 22; i++) {
-    images.push(loadImage(`/guido/${i}.jpg`))
+    images.push(loadImage(`/guido/${i}.jpg`));
   }
   TexturedShape.preload();
 }
@@ -63,11 +68,11 @@ function drawStory(iteration, x, y, w, h) {
   }
 
   push();
-  fill(random(128, 255))
+  fill(random(128, 255));
   noStroke();
   translate(x, y);
   const shape = new TexturedShape();
-  const imgIndex = round(random(0, images.length))
+  const imgIndex = round(random(0, images.length));
   shape.setTexture(images[imgIndex]);
   shape.fill(255);
   shape.vertex(w, 0);

@@ -20,7 +20,7 @@ const settings = {
     mic = new p5.AudioIn((err) => {
       console.error(`Could not create audio in: `, err);
     });
-    fft = new p5.FFT(0.9, 16);
+    fft = new p5.FFT(0.9, settings.spectrumSize);
     mic.start();
     fft.setInput(mic);
   },
@@ -54,6 +54,10 @@ function draw() {
   background(0);
   fill(255);
 
+  if (mic && fft) {
+    spectrum = fft.analyze();
+  }
+
   scale(0.8);
   translate(-width / 2, height / 2);
   let audioVal = 1;
@@ -66,7 +70,5 @@ function draw() {
     rect(i * step, 0, step, -100 * audioVal);
   }
 
-  if (mic && fft) {
-    spectrum = fft.analyze();
-  }
+  
 }
