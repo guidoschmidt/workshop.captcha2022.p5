@@ -169,7 +169,9 @@ class TexturedShape {
         }
         case "ellipse": {
           const { x, y, r1, r2 } = shape;
-          ellipse(x, y, r1, r2);
+          // Use 100 here to get smoother circles when
+          // using the TexuterShape class :)
+          ellipse(x, y, r1, r2, 100);
         }
       }
     });
