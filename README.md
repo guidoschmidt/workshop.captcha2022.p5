@@ -7,6 +7,12 @@ You can also checkout this [p5 web editor
 collection](https://editor.p5js.org/guidoschmidt/collections/a1ImoKrB8), if you
 prefer working with the online editor.
 
+<div>
+  <img width="30%" src="/screenshots/1664957810535.png">
+  <img width="30%" src="/screenshots/1664957818079.png">
+  <img width="30%" src="/screenshots/1664957869016.png">
+</div>
+
 ---
 
 ### Project Structure
